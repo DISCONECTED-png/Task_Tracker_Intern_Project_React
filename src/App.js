@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Login from './components/Login';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
+import TaskFilter from './components/TaskFilter';
 import { loadTasks, saveTasks } from './utils/localstorage';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('username'));
   const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     setTasks(loadTasks());
@@ -22,7 +24,8 @@ function App() {
     <div className="container">
       <h1>Welcome, {user}!</h1>
       <TaskForm setTasks={setTasks} />
-      <TaskList tasks={tasks} setTasks={setTasks} filter="all" />
+      <TaskFilter filter={filter} setFilter={setFilter} tasks={tasks} />
+      <TaskList tasks={tasks} setTasks={setTasks} filter={filter} />
     </div>
   );
 }
