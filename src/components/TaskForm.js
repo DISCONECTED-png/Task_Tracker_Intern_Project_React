@@ -1,23 +1,25 @@
-import { useState } from "react";
-import {v4 as uuid} from 'uuid';
-function TaskForm({setTasks}) {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
-const handleSubmit = (e) =>{
+function TaskForm({ setTasks }) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newTask = {
-        id: uuid(),
-        title,
-        description,
-        completed : false,
-        createdAt: new Date().toISOString()
+      id: uuid(),
+      title,
+      description,
+      completed: false,
+      createdAt: new Date().toISOString()
     };
     setTasks((prev) => [newTask, ...prev]);
     setTitle('');
     setDescription('');
-};
-return (
+  };
+
+  return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"

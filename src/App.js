@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import './styles/App.css';
 import Login from './components/Login';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import TaskFilter from './components/TaskFilter';
-import { loadTasks, saveTasks } from './utils/localstorage';
+import { loadTasks, saveTasks } from './utils/localStorage';
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem('username'));
+  const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('all');
 
+  // 👇 Load user after initial mount
   useEffect(() => {
-    setTasks(loadTasks());
+    const savedUser = localStorage.getItem('username');
+    setUser(savedUser);
+    const storedTasks = loadTasks();
+    setTasks(storedTasks);
+    console.log('Initial localStorage:', storedTasks);
   }, []);
 
+  // 👇 Save tasks when updated
   useEffect(() => {
-    saveTasks(tasks);
+    if (tasks.length > 0) {
+      saveTasks(tasks);
+    }
   }, [tasks]);
 
   if (!user) return <Login setUser={setUser} />;
