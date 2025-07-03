@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Login from './components/Login';
 import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
 import { loadTasks, saveTasks } from './utils/localstorage';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <div className="container">
       <h1>Welcome, {user}!</h1>
       <TaskForm setTasks={setTasks} />
+      <TaskList tasks={tasks} setTasks={setTasks} filter="all" />
     </div>
   );
 }
