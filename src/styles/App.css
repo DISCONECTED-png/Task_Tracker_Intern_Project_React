@@ -38,7 +38,7 @@ body {
   
   .task-left {
     display: flex;
-    align-items: center; /* ✅ vertically center checkbox and content */
+    align-items: center;
     gap: 1rem;
   }  
   
@@ -337,7 +337,7 @@ body {
     background-color: #4dabf7;
     color: black;
   }
-  /* Custom checkbox */
+
 .custom-checkbox {
   appearance: none;
   width: 1.4rem;
@@ -365,12 +365,11 @@ body {
   transform: scale(1);
 }
 
-/* Optional hover effect */
+
 .custom-checkbox:hover {
   border-color: #0056b3;
 }
 
-/* Dark mode override */
 body.dark .custom-checkbox {
   border-color: #4dabf7;
 }
@@ -393,7 +392,7 @@ body.dark .custom-checkbox::before {
 body.dark .empty-message {
   color: #aaa;
 }
-/* Modal Overlay */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -407,7 +406,7 @@ body.dark .empty-message {
   z-index: 999;
 }
 
-/* Modal Box */
+
 .modal-content {
   background: #fff;
   padding: 2rem;
@@ -456,9 +455,9 @@ body.dark .modal-content {
 .logout-button:hover {
   background-color: #d9363e;
 }
-/* ---------- LOGIN PAGE ---------- */
+
 .login-wrapper {
-  min-height: 100vh;            /* full‑screen center */
+  min-height: 100vh;           
   display: flex;
   justify-content: center;
   align-items: center;
@@ -506,7 +505,7 @@ body.dark .modal-content {
   background: #0056b3;
 }
 
-/* Dark mode for login */
+
 body.dark .login-card {
   background: #1e1e1e;
   color: #eee;
@@ -609,7 +608,7 @@ body.dark .search-dropdown {
 body.dark .search-option:hover {
   background: #333;
 }
-/* ===== Task item animations ===== */
+
 .task-item {
   opacity: 1;
   transform: translateY(0);
@@ -636,7 +635,7 @@ body.dark .search-option:hover {
   transform: translateY(20px);
 }
 
-/* ===== Modal zoom animation ===== */
+
 .modal-overlay {
   animation: fadeIn 0.3s ease forwards;
 }
@@ -655,7 +654,6 @@ body.dark .search-option:hover {
   to   { transform: scale(1); opacity: 1; }
 }
 
-/* ===== Search dropdown animation ===== */
 .search-dropdown {
   animation: dropDown 0.2s ease-out forwards;
 }
@@ -700,5 +698,61 @@ body.dark .search-option:hover {
   100% { background-color: inherit; }
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    border-radius: 0;
+  }
 
-  
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+ 
+
+  .search-dropdown {
+    max-height: 150px;
+    font-size: 0.9rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-button {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+
+  .filter-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .task-content h4 {
+    font-size: 1rem;
+  }
+
+  .search-option {
+    padding: 0.5rem 0.75rem;
+  }
+}
