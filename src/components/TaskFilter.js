@@ -9,16 +9,17 @@ function TaskFilter({ filter, setFilter, tasks }) {
 
   return (
     <div className="filters">
-      {['all', 'completed', 'pending'].map((type) => (
-        <button
-          key={type}
-          className={filter === type ? 'active' : ''}
-          onClick={() => setFilter(type)}
-        >
-          {type[0].toUpperCase() + type.slice(1)} ({counts[type]})
-        </button>
-      ))}
-    </div>
+  {['all', 'completed', 'pending'].map((type) => (
+    <button
+      key={type}
+      className={filter === type ? 'active' : ''}
+      onClick={() => setFilter(type)}
+    >
+      {type[0].toUpperCase() + type.slice(1)}
+    </button>
+  ))}
+</div>
+
   );
 }
 

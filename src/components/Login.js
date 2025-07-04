@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 
 function Login({ setUser }) {
@@ -6,22 +5,29 @@ function Login({ setUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('username', username);
-    setUser(username);
+    localStorage.setItem('username', username.trim());
+    setUser(username.trim());
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Enter username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-wrapper">
+      <form className="login-card" onSubmit={handleSubmit}>
+        <h2 className="login-title">Welcome Back</h2>
+
+        <input
+          className="login-input"
+          type="text"
+          placeholder="Enter username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+
+        <button className="login-button" type="submit">
+          Sign In
+        </button>
+      </form>
+    </div>
   );
 }
 
